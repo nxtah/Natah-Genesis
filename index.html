@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natah-Genesis</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="translations.js"></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -19,7 +20,12 @@
                     <a href="#" class="navbar-logo">NG</a>
                 </div>
                 <div class="navbar-right">
-                    <a href="mailto:rizkynath543@gmail.com" class="navbar-link">Get in touch</a>
+                    <button class="lang-toggle" id="lang-toggle">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-divider">/</span>
+                        <span class="lang-option" data-lang="id">ID</span>
+                    </button>
+                    <a href="mailto:rizkynath543@gmail.com" class="navbar-link" data-i18n="nav.contact">Get in touch</a>
                     <span class="navbar-text" id="section-indicator">Introduction</span>
                 </div>
             </div>
@@ -36,7 +42,12 @@
             <div class="mobile-menu" id="mobile-menu">
                 <a href="#" class="mobile-menu-item" id="mobile-back-to-top">Back to top</a>
                 <a href="mailto:rizkynath543@gmail.com" class="mobile-menu-item">Get in touch</a>
-                <a href="#" class="mobile-menu-item" id="mobile-chat-btn">Chat with my bot</a>
+                <a href="#" class="mobile-menu-item" id="mobile-chat-btn">Chat with my bot <span class="menu-star">★</span></a>
+                <button class="mobile-menu-item mobile-lang-toggle" id="mobile-lang-toggle">
+                    <span class="mobile-lang-option active" data-lang="en">EN</span>
+                    <span class="mobile-lang-divider">/</span>
+                    <span class="mobile-lang-option" data-lang="id">ID</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -45,7 +56,7 @@
     <section class="hero-section" data-section="Introduction">
         <div class="stars-container" id="stars-container"></div>
         <div class="container">
-            <h1 class="hero-title">Natah-Genesis.</h1>
+            <h1 class="hero-title" data-i18n="hero.title">Natah-Genesis.</h1>
         </div>
     </section>
 
@@ -53,8 +64,8 @@
     <section class="intro-section" data-section="About">
         <div class="container">
             <div class="intro-content">
-                <h2 class="intro-heading">Building the Future of <br><span class="intro-highlight">Intelligent Business</span></h2> <br>
-                <p class="intro-description"><span class="intro-pop">Natah-Genesis</span> brings deep expertise in <span class="intro-pop">AI automation</span> and intelligent systems, helping businesses streamline operations and <span class="intro-pop">scale efficiently</span> through cutting-edge technology solutions.</p>
+                <h2 class="intro-heading" data-i18n="intro.heading">Building the Future of <br><span class="intro-highlight" data-i18n="intro.highlight">Intelligent Business</span></h2> <br>
+                <p class="intro-description" data-i18n-html="intro.description"><span class="intro-pop">Natah-Genesis</span> brings deep expertise in <span class="intro-pop">AI automation</span> and intelligent systems, helping businesses streamline operations and <span class="intro-pop">scale efficiently</span> through cutting-edge technology solutions.</p>
             </div>
         </div>
     </section>
@@ -65,15 +76,15 @@
             <div class="stats-content">
                 <div class="stat-item">
                     <div class="stat-number">500+</div>
-                    <div class="stat-label">Projects Delivered</div>
+                    <div class="stat-label" data-i18n="stats.projects">Projects Delivered</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">98%</div>
-                    <div class="stat-label">Client Satisfaction</div>
+                    <div class="stat-label" data-i18n="stats.satisfaction">Client Satisfaction</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">AI Automation</div>
+                    <div class="stat-label" data-i18n="stats.support">Support Available</div>
                 </div>
             </div>
         </div>
@@ -82,42 +93,42 @@
     <!-- Problem Section -->
     <section class="problem-section" data-section="Problem">
         <div class="container">
-            <h2 class="problem-heading">The Challenge<span class="thinking-dots"><span>.</span><span>.</span><span>.</span></span></h2>
-            <p class="problem-hint">Click The Card</p>
+            <h2 class="problem-heading" data-i18n="problem.heading">The Challenge<span class="thinking-dots"><span>.</span><span>.</span><span>.</span></span></h2>
+            <p class="problem-hint" data-i18n="problem.hint">Click The Card</p>
             <div class="problem-cards">
                 <div class="problem-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <h3 class="card-title">Manual Processes</h3>
-                            <p class="card-description">Businesses spend countless hours on repetitive tasks that drain resources and limit growth potential, preventing teams from focusing on strategic initiatives.</p>
+                            <h3 class="card-title" data-i18n="problem.card1Front.title">Manual Processes</h3>
+                            <p class="card-description" data-i18n="problem.card1Front.desc">Businesses spend countless hours on repetitive tasks that drain resources and limit growth potential, preventing teams from focusing on strategic initiatives.</p>
                         </div>
                         <div class="card-back">
-                            <h3 class="card-title">Our Solution</h3>
-                            <p class="card-description">Automate repetitive workflows with intelligent systems that learn and adapt. Our AI agents work 24/7 to handle routine tasks, giving your team back precious time to focus on innovation and strategic growth. Reduce operational costs by up to 60% while improving accuracy and consistency.</p>
+                            <h3 class="card-title" data-i18n="problem.card1Back.title">Our Solution</h3>
+                            <p class="card-description" data-i18n="problem.card1Back.desc">Automate repetitive workflows with intelligent systems that learn and adapt. Our AI agents work 24/7 to handle routine tasks, giving your team back precious time to focus on innovation and strategic growth. Reduce operational costs by up to 60% while improving accuracy and consistency.</p>
                         </div>
                     </div>
                 </div>
                 <div class="problem-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <h3 class="card-title">Inefficient Workflows</h3>
-                            <p class="card-description">Disconnected systems and fragmented data create bottlenecks that slow down operations, reduce productivity, and lead to missed opportunities.</p>
+                            <h3 class="card-title" data-i18n="problem.card2Front.title">Inefficient Workflows</h3>
+                            <p class="card-description" data-i18n="problem.card2Front.desc">Disconnected systems and fragmented data create bottlenecks that slow down operations, reduce productivity, and lead to missed opportunities.</p>
                         </div>
                         <div class="card-back">
-                            <h3 class="card-title">Our Solution</h3>
-                            <p class="card-description">Integrate your entire tech stack into one seamless ecosystem. We bridge gaps between tools and platforms, creating unified workflows that eliminate bottlenecks. Real-time data synchronization ensures every team has access to the information they need, when they need it, improving decision-making speed by 5x.</p>
+                            <h3 class="card-title" data-i18n="problem.card2Back.title">Our Solution</h3>
+                            <p class="card-description" data-i18n="problem.card2Back.desc">Integrate your entire tech stack into one seamless ecosystem. We bridge gaps between tools and platforms, creating unified workflows that eliminate bottlenecks. Real-time data synchronization ensures every team has access to the information they need, when they need it, improving decision-making speed by 5x.</p>
                         </div>
                     </div>
                 </div>
                 <div class="problem-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <h3 class="card-title">Limited Scalability</h3>
-                            <p class="card-description">Traditional solutions struggle to adapt to growing demands, making it difficult for organizations to scale efficiently without exponential cost increases.</p>
+                            <h3 class="card-title" data-i18n="problem.card3Front.title">Limited Scalability</h3>
+                            <p class="card-description" data-i18n="problem.card3Front.desc">Traditional solutions struggle to adapt to growing demands, making it difficult for organizations to scale efficiently without exponential cost increases.</p>
                         </div>
                         <div class="card-back">
-                            <h3 class="card-title">Our Solution</h3>
-                            <p class="card-description">Built on cloud-native architecture that grows with your business. Our scalable infrastructure automatically adjusts to demand, eliminating costly infrastructure management. Pay only for what you use while enjoying enterprise-grade reliability and security. Scale from 100 to 100,000 users without any performance degradation.</p>
+                            <h3 class="card-title" data-i18n="problem.card3Back.title">Our Solution</h3>
+                            <p class="card-description" data-i18n="problem.card3Back.desc">Built on cloud-native architecture that grows with your business. Our scalable infrastructure automatically adjusts to demand, eliminating costly infrastructure management. Pay only for what you use while enjoying enterprise-grade reliability and security. Scale from 100 to 100,000 users without any performance degradation.</p>
                         </div>
                     </div>
                 </div>
@@ -128,31 +139,31 @@
     <!-- Solution Section -->
     <section class="solution-section" data-section="Solution">
         <div class="container">
-            <h2 class="solution-heading">AI-Powered <span class="solution-gradient">Solutions</span></h2>
-            <p class="solution-subtitle">Transform your business with intelligent automation that adapts to your needs</p>
+            <h2 class="solution-heading" data-i18n-html="solution.heading">AI-Powered <span class="solution-gradient">Solutions</span></h2>
+            <p class="solution-subtitle" data-i18n="solution.subtitle">Transform your business with intelligent automation that adapts to your needs</p>
             
             <div class="solution-content">
                 <div class="solution-item" data-image="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=600&fit=crop">
                     <div class="solution-number">01</div>
                     <div class="solution-details">
-                        <h3 class="solution-title">Intelligent Automation</h3>
-                        <p class="solution-description">Our AI agents handle repetitive tasks autonomously, freeing your team to focus on strategic work that drives real value. From data processing to customer interactions, we automate what matters.</p>
+                        <h3 class="solution-title" data-i18n="solution.item1.title">Intelligent Automation</h3>
+                        <p class="solution-description" data-i18n="solution.item1.desc">Our AI agents handle repetitive tasks autonomously, freeing your team to focus on strategic work that drives real value. From data processing to customer interactions, we automate what matters.</p>
                     </div>
                 </div>
                 
                 <div class="solution-item" data-image="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=600&fit=crop">
                     <div class="solution-number">02</div>
                     <div class="solution-details">
-                        <h3 class="solution-title">Seamless Integration</h3>
-                        <p class="solution-description">Connect all your systems into one unified ecosystem. Our solutions integrate with your existing tools, creating smooth workflows that eliminate bottlenecks and maximize efficiency.</p>
+                        <h3 class="solution-title" data-i18n="solution.item2.title">Seamless Integration</h3>
+                        <p class="solution-description" data-i18n="solution.item2.desc">Connect all your systems into one unified ecosystem. Our solutions integrate with your existing tools, creating smooth workflows that eliminate bottlenecks and maximize efficiency.</p>
                     </div>
                 </div>
                 
                 <div class="solution-item" data-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=600&fit=crop">
                     <div class="solution-number">03</div>
                     <div class="solution-details">
-                        <h3 class="solution-title">Scalable Architecture</h3>
-                        <p class="solution-description">Built to grow with you. Our cloud-native infrastructure scales dynamically, handling increased demand without compromising performance or breaking your budget.</p>
+                        <h3 class="solution-title" data-i18n="solution.item3.title">Scalable Architecture</h3>
+                        <p class="solution-description" data-i18n="solution.item3.desc">Built to grow with you. Our cloud-native infrastructure scales dynamically, handling increased demand without compromising performance or breaking your budget.</p>
                     </div>
                 </div>
             </div>
@@ -165,73 +176,73 @@
     <!-- Service Section -->
     <section class="service-section" data-section="Service">
         <div class="container">
-            <h2 class="service-heading">Our Services</h2>
-            <p class="service-subtitle">Comprehensive solutions tailored to your business needs</p>
+            <h2 class="service-heading" data-i18n="service.heading">Our Services</h2>
+            <p class="service-subtitle" data-i18n="service.subtitle">Premium web solutions crafted for modern businesses</p>
             
             <div class="service-grid">
                 <div class="service-box">
-                    <div class="service-icon">⚙️</div>
-                    <h3 class="service-box-title">Custom AI Integration</h3>
-                    <p class="service-box-description">Deploy tailored AI solutions that fit your unique workflows perfectly</p>
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-box-title" data-i18n="service.landing.title">Landing Page</h3>
+                    <p class="service-box-description" data-i18n="service.landing.desc">Convert visitors into customers with high-performance landing pages designed for maximum impact</p>
                     <div class="service-features">
-                        <span class="feature-tag">API Integration</span>
-                        <span class="feature-tag">Custom Models</span>
-                        <span class="feature-tag">24/7 Support</span>
+                        <span class="feature-tag" data-i18n="service.landing.tag1">Fast Loading</span>
+                        <span class="feature-tag" data-i18n="service.landing.tag2">Conversion Focused</span>
+                        <span class="feature-tag" data-i18n="service.landing.tag3">Mobile First</span>
                     </div>
                 </div>
                 
                 <div class="service-box">
-                    <div class="service-icon">📊</div>
-                    <h3 class="service-box-title">Data Analytics</h3>
-                    <p class="service-box-description">Transform raw data into actionable insights with advanced analytics</p>
+                    <div class="service-icon">💼</div>
+                    <h3 class="service-box-title" data-i18n="service.business.title">Business Website</h3>
+                    <p class="service-box-description" data-i18n="service.business.desc">Professional websites that establish credibility and drive growth for your business</p>
                     <div class="service-features">
-                        <span class="feature-tag">Real-time Dashboards</span>
-                        <span class="feature-tag">Predictive Analytics</span>
-                        <span class="feature-tag">Custom Reports</span>
+                        <span class="feature-tag" data-i18n="service.business.tag1">SEO Optimized</span>
+                        <span class="feature-tag" data-i18n="service.business.tag2">Scalable</span>
+                        <span class="feature-tag" data-i18n="service.business.tag3">Analytics Ready</span>
+                    </div>
+                </div>
+                
+                <div class="service-box">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-box-title" data-i18n="service.portfolio.title">Personal Portfolio</h3>
+                    <p class="service-box-description" data-i18n="service.portfolio.desc">Stand out from the crowd with a stunning portfolio that showcases your unique story and work</p>
+                    <div class="service-features">
+                        <span class="feature-tag" data-i18n="service.portfolio.tag1">Creative Design</span>
+                        <span class="feature-tag" data-i18n="service.portfolio.tag2">Interactive</span>
+                        <span class="feature-tag" data-i18n="service.portfolio.tag3">Personal Branding</span>
+                    </div>
+                </div>
+                
+                <div class="service-box">
+                    <div class="service-icon">💎</div>
+                    <h3 class="service-box-title" data-i18n="service.bundleBiz.title">Business + AI Bundle</h3>
+                    <p class="service-box-description" data-i18n="service.bundleBiz.desc">Elevate your business with a professional website integrated with intelligent AI chatbot support</p>
+                    <div class="service-features">
+                        <span class="feature-tag" data-i18n="service.bundleBiz.tag1">24/7 AI Support</span>
+                        <span class="feature-tag" data-i18n="service.bundleBiz.tag2">Smart Automation</span>
+                        <span class="feature-tag" data-i18n="service.bundleBiz.tag3">Best Value</span>
+                    </div>
+                </div>
+                
+                <div class="service-box">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-box-title" data-i18n="service.bundlePort.title">Portfolio + AI Bundle</h3>
+                    <p class="service-box-description" data-i18n="service.bundlePort.desc">Make lasting impressions with an AI-powered portfolio that engages visitors intelligently</p>
+                    <div class="service-features">
+                        <span class="feature-tag" data-i18n="service.bundlePort.tag1">AI Assistant</span>
+                        <span class="feature-tag" data-i18n="service.bundlePort.tag2">Lead Generation</span>
+                        <span class="feature-tag" data-i18n="service.bundlePort.tag3">Premium Package</span>
                     </div>
                 </div>
                 
                 <div class="service-box">
                     <div class="service-icon">🤖</div>
-                    <h3 class="service-box-title">AI Chatbots</h3>
-                    <p class="service-box-description">Intelligent conversational agents for 24/7 customer support</p>
+                    <h3 class="service-box-title" data-i18n="service.custom.title">Custom AI Solutions</h3>
+                    <p class="service-box-description" data-i18n="service.custom.desc">Need something unique? Let's build custom AI-powered features tailored specifically for you</p>
                     <div class="service-features">
-                        <span class="feature-tag">Multi-language</span>
-                        <span class="feature-tag">Context Aware</span>
-                        <span class="feature-tag">Easy Training</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">🔒</div>
-                    <h3 class="service-box-title">Security & Compliance</h3>
-                    <p class="service-box-description">Enterprise-grade security with full compliance to industry standards</p>
-                    <div class="service-features">
-                        <span class="feature-tag">GDPR Compliant</span>
-                        <span class="feature-tag">Encryption</span>
-                        <span class="feature-tag">Audit Logs</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">👥</div>
-                    <h3 class="service-box-title">Team Training</h3>
-                    <p class="service-box-description">Comprehensive training programs to maximize platform adoption</p>
-                    <div class="service-features">
-                        <span class="feature-tag">Workshops</span>
-                        <span class="feature-tag">Documentation</span>
-                        <span class="feature-tag">Certification</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">🚀</div>
-                    <h3 class="service-box-title">Consultation</h3>
-                    <p class="service-box-description">Expert guidance to accelerate your digital transformation journey</p>
-                    <div class="service-features">
-                        <span class="feature-tag">Strategy Sessions</span>
-                        <span class="feature-tag">Best Practices</span>
-                        <span class="feature-tag">Roadmapping</span>
+                        <span class="feature-tag" data-i18n="service.custom.tag1">Fully Custom</span>
+                        <span class="feature-tag" data-i18n="service.custom.tag2">Flexible</span>
+                        <span class="feature-tag" data-i18n="service.custom.tag3">Consultation</span>
                     </div>
                 </div>
             </div>
@@ -250,7 +261,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer-section">
+    <footer class="footer-section" data-section="Footer">
         <div class="stars-container" id="footer-stars-container"></div>
         <div class="container">
             <h2 class="footer-title">Natah-Genesis.</h2>

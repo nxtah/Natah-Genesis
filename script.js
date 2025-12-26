@@ -1,7 +1,141 @@
-// Natah-Genesis JavaScript
-
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Natah-Genesis loaded');
+    
+    // Language Switcher
+    let currentLang = localStorage.getItem('preferred-language') || 'en';
+    
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('preferred-language', lang);
+        
+        // Update active state on toggle button
+        document.querySelectorAll('.lang-option, .mobile-lang-option').forEach(opt => {
+            if (opt.dataset.lang === lang) {
+                opt.classList.add('active');
+            } else {
+                opt.classList.remove('active');
+            }
+        });
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const keys = el.dataset.i18n.split('.');
+            let value = translations[lang];
+            keys.forEach(key => value = value[key]);
+            
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = value;
+            } else {
+                el.textContent = value;
+            }
+        });
+        
+        // Update elements with HTML content
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const keys = el.dataset.i18nHtml.split('.');
+            let value = translations[lang];
+            keys.forEach(key => value = value[key]);
+            
+            // Re-apply word animation wrapper after changing HTML
+            if (el.classList.contains('intro-description')) {
+                el.innerHTML = value;
+                applyWordAnimation(el);
+                // Trigger animation immediately for already-visible section
+                if (el.classList.contains('animated')) {
+                    const wordSpans = el.querySelectorAll('.word-animate');
+                    wordSpans.forEach((span, index) => {
+                        const delayMs = index * 100;
+                        span.style.animationDelay = `${delayMs}ms`;
+                        span.classList.add('animate');
+                    });
+                }
+            } else {
+                el.innerHTML = value;
+            }
+        });
+        
+        // Update intro heading with special structure
+        const introHeading = document.querySelector('.intro-heading');
+        if (introHeading) {
+            const heading = translations[lang].intro.heading;
+            const highlight = translations[lang].intro.highlight;
+            introHeading.innerHTML = `${heading}<br><span class="intro-highlight">${highlight}</span>`;
+        }
+    }
+    
+    // Initialize language on load
+    setLanguage(currentLang);
+    
+    // Language toggle click handler
+    const langToggle = document.getElementById('lang-toggle');
+    const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+    
+    if (langToggle) {
+        langToggle.addEventListener('click', function() {
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            setLanguage(newLang);
+        });
+    }
+    
+    if (mobileLangToggle) {
+        mobileLangToggle.addEventListener('click', function() {
+            const newLang = currentLang === 'en' ? 'id' : 'en';
+            setLanguage(newLang);
+        });
+    }
+    
+    // Word-by-word entrance animation for intro description
+    function applyWordAnimation(element) {
+        const text = element.innerHTML;
+        // Split by spaces but preserve HTML tags
+        const words = text.split(/(\s+|<[^>]+>)/);
+        
+        let animatedHTML = '';
+        let wordCount = 0;
+        
+        words.forEach(word => {
+            if (word.trim() === '' || word.startsWith('<')) {
+                // Preserve whitespace and HTML tags
+                animatedHTML += word;
+            } else {
+                // Wrap word with animation span (no delay initially)
+                animatedHTML += `<span class="word-animate">${word}</span>`;
+                wordCount++;
+            }
+        });
+        
+        element.innerHTML = animatedHTML;
+    }
+    
+    // Word-by-word entrance animation for intro description
+    const introDescription = document.querySelector('.intro-description');
+    if (introDescription) {
+        applyWordAnimation(introDescription);
+        
+        // Trigger animation when user scrolls to intro section
+        const introSection = document.querySelector('.intro-section');
+        if (introSection) {
+            const introObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !introDescription.classList.contains('animated')) {
+                        // Add staggered delays and trigger animation
+                        const wordSpans = introDescription.querySelectorAll('.word-animate');
+                        wordSpans.forEach((span, index) => {
+                            const delayMs = index * 100; // 100ms stagger
+                            span.style.animationDelay = `${delayMs}ms`;
+                            span.classList.add('animate'); // Apply animation class
+                        });
+                        introDescription.classList.add('animated');
+                        introObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+            
+            introObserver.observe(introSection);
+        }
+    }
     
     // Logo click - scroll to top
     const logo = document.querySelector('.navbar-logo');
@@ -177,8 +311,36 @@ document.addEventListener('DOMContentLoaded', function() {
         teleportIntervals.set(container, interval);
     }
     
-    // Problem Cards - Click to flip on touch devices
+    // Problem cards entrance animation
+    const problemSection = document.querySelector('.problem-section');
     const problemCards = document.querySelectorAll('.problem-card');
+    const problemHeading = document.querySelector('.problem-heading');
+    
+    if (problemSection && problemCards.length > 0) {
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger heading animation first
+                    if (problemHeading) {
+                        problemHeading.classList.add('heading-visible');
+                    }
+                    // Trigger cards animation with slight delay
+                    setTimeout(() => {
+                        problemCards.forEach(card => {
+                            card.classList.add('card-visible');
+                        });
+                    }, 200);
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        cardObserver.observe(problemSection);
+    }
+    
+    // Problem Cards - Click to flip on touch devices
     problemCards.forEach(card => {
         card.addEventListener('click', function(e) {
             // Check if device is touch-enabled
@@ -280,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Update chat button text based on section
-    const sections = document.querySelectorAll('section[data-section]');
+    const sections = document.querySelectorAll('section[data-section], footer[data-section]');
     
     const chatObserverOptions = {
         root: null,
@@ -325,7 +487,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Add slide-in animation
                     sectionIndicator.classList.remove('slide-in');
                     void sectionIndicator.offsetWidth; // Trigger reflow
-                    sectionIndicator.textContent = sectionName;
+                    // Special text for footer section
+                    if (entry.target.classList.contains('footer-section')) {
+                        sectionIndicator.textContent = "Let's Rock!";
+                    } else {
+                        sectionIndicator.textContent = sectionName;
+                    }
                     sectionIndicator.classList.add('slide-in');
                 }
             }
@@ -339,6 +506,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Solution items scroll animation
     const solutionItems = document.querySelectorAll('.solution-item');
+    const solutionHeading = document.querySelector('.solution-heading');
+    const solutionSubtitle = document.querySelector('.solution-subtitle');
+    const solutionSection = document.querySelector('.solution-section');
+    
+    if (solutionSection) {
+        const solutionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger heading animation
+                    if (solutionHeading) {
+                        solutionHeading.classList.add('heading-visible');
+                    }
+                    // Trigger subtitle animation
+                    if (solutionSubtitle) {
+                        solutionSubtitle.classList.add('subtitle-visible');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        solutionObserver.observe(solutionSection);
+    }
     
     if (solutionItems.length > 0) {
         const itemObserver = new IntersectionObserver((entries) => {
@@ -379,6 +570,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 cursorImage.style.top = e.clientY + 'px';
             });
         });
+    }
+
+    // Service section entrance animation
+    const serviceSection = document.querySelector('.service-section');
+    const serviceHeading = document.querySelector('.service-heading');
+    const serviceSubtitle = document.querySelector('.service-subtitle');
+    const serviceBoxes = document.querySelectorAll('.service-box');
+    
+    if (serviceSection) {
+        const serviceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger heading animation
+                    if (serviceHeading) {
+                        serviceHeading.classList.add('heading-visible');
+                    }
+                    // Trigger subtitle animation
+                    if (serviceSubtitle) {
+                        serviceSubtitle.classList.add('subtitle-visible');
+                    }
+                    // Trigger boxes animation
+                    if (serviceBoxes.length > 0) {
+                        serviceBoxes.forEach(box => {
+                            box.classList.add('box-visible');
+                        });
+                    }
+                    serviceObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        serviceObserver.observe(serviceSection);
     }
 
     // Counter animation for stats section
