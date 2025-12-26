@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Logo click - scroll to top
     const logo = document.querySelector('.navbar-logo');
+    const mobileLogo = document.querySelector('.mobile-logo');
+    
     if (logo) {
         logo.addEventListener('click', function(e) {
             e.preventDefault();
@@ -13,6 +15,60 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
         });
+    }
+    
+    if (mobileLogo) {
+        mobileLogo.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBackToTop = document.getElementById('mobile-back-to-top');
+    const mobileChatBtn = document.getElementById('mobile-chat-btn');
+    
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // Back to top functionality
+        if (mobileBackToTop) {
+            mobileBackToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileMenu.classList.remove('active');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Mobile chat button
+        if (mobileChatBtn) {
+            mobileChatBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                mobileMenu.classList.remove('active');
+                const chatbotContainer = document.getElementById('chatbot-container');
+                if (chatbotContainer) {
+                    chatbotContainer.classList.add('active');
+                }
+            });
+        }
     }
     
     // Stars Animation - Inactivity Detection
@@ -121,6 +177,23 @@ document.addEventListener('DOMContentLoaded', function() {
         teleportIntervals.set(container, interval);
     }
     
+    // Problem Cards - Click to flip on touch devices
+    const problemCards = document.querySelectorAll('.problem-card');
+    problemCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Check if device is touch-enabled
+            if (window.matchMedia('(hover: none)').matches) {
+                e.preventDefault();
+                const cardInner = card.querySelector('.card-inner');
+                if (cardInner.style.transform === 'rotateY(180deg)') {
+                    cardInner.style.transform = 'rotateY(0deg)';
+                } else {
+                    cardInner.style.transform = 'rotateY(180deg)';
+                }
+            }
+        });
+    });
+    
     function stopStarTeleportation(container) {
         if (teleportIntervals.has(container)) {
             clearInterval(teleportIntervals.get(container));
@@ -193,8 +266,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('click', function(e) {
             const isClickInsideChatbot = chatbotContainer.contains(e.target);
             const isClickOnButton = chatbotBtn.contains(e.target);
+            const mobileChatBtn = document.getElementById('mobile-chat-btn');
+            const isClickOnMobileChat = mobileChatBtn && mobileChatBtn.contains(e.target);
             
-            if (!isClickInsideChatbot && !isClickOnButton && chatbotContainer.classList.contains('active')) {
+            if (!isClickInsideChatbot && !isClickOnButton && !isClickOnMobileChat && chatbotContainer.classList.contains('active')) {
                 // Trigger close animation
                 chatbotContainer.classList.add('closing');
                 setTimeout(function() {

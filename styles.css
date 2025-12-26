@@ -189,6 +189,79 @@ body {
     transform: scaleX(1);
 }
 
+/* Mobile Navbar - Hidden on Desktop */
+.mobile-navbar {
+    display: none;
+}
+
+.mobile-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -1.2px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle .dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    display: block;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 15px 0;
+    min-width: 180px;
+    max-width: calc(100vw - 24px);
+    z-index: 1100;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu-item {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    transition: background 0.2s ease;
+}
+
+.mobile-menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* Hero Section */
 .hero-section {
     height: 100vh;
@@ -200,10 +273,10 @@ body {
 
 .hero-title {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(7rem, 18vw, 18rem);
+    font-size: clamp(6rem, 16vw, 20rem);
     font-weight: 400;
     letter-spacing: -1.2px;
-    line-height: 1.1;
+    line-height: 1;
     color: #fff;
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
     transform: translateX(0);
@@ -310,6 +383,17 @@ body {
 
 .thinking-dots span:nth-child(3) {
     animation-delay: 0.4s;
+}
+
+.problem-hint {
+    display: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: -70px;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
 }
 
 @keyframes blink {
@@ -921,6 +1005,20 @@ body {
 
 .chatbot-close {
     display: none;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #a855f7;
+    cursor: pointer;
+    z-index: 10000;
+    transition: opacity 0.2s ease;
+}
+
+.chatbot-close:hover {
+    opacity: 0.7;
 }
 
 /* Responsive Chatbot */
@@ -932,6 +1030,10 @@ body {
         left: 0;
         top: auto;
         border-radius: 0;
+    }
+    
+    .chatbot-close {
+        display: block;
     }
 }
 
@@ -946,6 +1048,24 @@ body {
 
 /* Tablet Portrait (768px and below) */
 @media (max-width: 768px) {
+    /* Hide desktop navbar, show mobile navbar */
+    .navbar-content {
+        display: none;
+    }
+    
+    .mobile-navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+    
+    .mobile-menu-toggle {
+        position: absolute;
+        right: 0;
+    }
+    
     .container {
         padding: 0 12px;
     }
@@ -955,7 +1075,8 @@ body {
     }
     
     .hero-title {
-        font-size: clamp(4rem, 14vw, 10rem);
+        font-size: clamp(8rem, 30vw, 25rem);
+        word-break: break-word;
     }
     
     .solution-item {
@@ -971,16 +1092,46 @@ body {
     }
     
     .hero-section {
-        padding-bottom: 20px;
+        padding-bottom: 50px;
+        align-items: flex-end;
+        line-height: -1.5px;
     }
     
-    .hero-title {
-        font-size: clamp(3rem, 12vw, 6rem);
+    .intro-badge {
+        margin-bottom: 15px;
     }
     
-    .intro-stats {
+    .intro-heading {
+        margin-bottom: 15px;
+        font-size: clamp(2.5rem, 9vw, 4.5rem);
+    }
+    
+    .intro-description {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+        word-spacing: 40px;
+    }
+    
+    .intro-pop {
+        font-size: clamp(1.8rem, 5vw, 3.5rem);
+    }
+    
+    .stats-content {
         flex-direction: column;
         gap: 40px;
+    }
+    
+    .problem-card {
+        padding: 30px 25px;
+        min-height: 300px;
+    }
+    
+    .problem-hint {
+        display: block;
+    }
+    
+    /* Disable hover flip on touch devices */
+    .problem-card:hover .card-inner {
+        transform: rotateY(0deg);
     }
     
     .intro-mission {
@@ -992,8 +1143,24 @@ body {
         gap: 15px;
     }
     
+    .service-box {
+        padding: 25px 20px;
+    }
+    
+    .service-box-title {
+        font-size: 1rem;
+    }
+    
+    .service-box-description {
+        font-size: 0.8rem;
+    }
+    
     .solution-number {
         font-size: 2.5rem;
+    }
+    
+    .footer-section {
+        height: 50vh;
     }
 }
 
@@ -1105,9 +1272,8 @@ body {
         left: 12px;
         gap: 8px;
     }
-
     .cta-arrow {
-        font-size: 24px;
+        display: none;
     }
 
     .cta-text {
