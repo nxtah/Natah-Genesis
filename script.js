@@ -15,9 +15,145 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Stars Animation - Inactivity Detection
+    let inactivityTimeout;
+    const heroStarsContainer = document.getElementById('stars-container');
+    const footerStarsContainer = document.getElementById('footer-stars-container');
+    const heroSection = document.querySelector('.hero-section');
+    const footerSection = document.querySelector('.footer-section');
+    
+    function createStars(container) {
+        container.innerHTML = '';
+        const starCount = Math.floor(Math.random() * 10) + 12; // 12-21 stars
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const fadeDelay = Math.random() * 0.5;
+            const blinkDuration = Math.random() * 3 + 2; // 2-5s
+            const blinkDelay = Math.random() * 1;
+            const floatDuration = Math.random() * 10 + 8; // 8-18s
+            const floatDelay = Math.random() * 2;
+            
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.animationDelay = fadeDelay + 's';
+            star.style.animation = `starFadeIn 0.8s ease-in ${fadeDelay}s forwards, 
+                                     starBlink ${blinkDuration}s ease-in-out ${blinkDelay}s infinite, 
+                                     starFloat ${floatDuration}s ease-in-out ${floatDelay}s infinite`;
+            
+            container.appendChild(star);
+        }
+    }
+    
+    function showStars() {
+        // Check which section is visible and show stars accordingly
+        const heroRect = heroSection.getBoundingClientRect();
+        const footerRect = footerSection.getBoundingClientRect();
+        const isInHero = heroRect.top <= window.innerHeight && heroRect.bottom >= 0;
+        const isInFooter = footerRect.top <= window.innerHeight && footerRect.bottom >= 0;
+        
+        if (isInHero && heroStarsContainer) {
+            createStars(heroStarsContainer);
+            heroStarsContainer.classList.add('visible');
+            startStarTeleportation(heroStarsContainer);
+        }
+        
+        if (isInFooter && footerStarsContainer) {
+            createStars(footerStarsContainer);
+            footerStarsContainer.classList.add('visible');
+            startStarTeleportation(footerStarsContainer);
+        }
+    }
+    
+    function hideStars() {
+        if (heroStarsContainer) {
+            heroStarsContainer.classList.remove('visible');
+            stopStarTeleportation(heroStarsContainer);
+        }
+        if (footerStarsContainer) {
+            footerStarsContainer.classList.remove('visible');
+            stopStarTeleportation(footerStarsContainer);
+        }
+    }
+    
+    let teleportIntervals = new Map();
+    
+    function startStarTeleportation(container) {
+        stopStarTeleportation(container);
+        const interval = setInterval(() => {
+            const stars = container.querySelectorAll('.star');
+            if (stars.length > 0) {
+                // Randomly pick 1-3 stars to teleport
+                const numberOfStarsToMove = Math.floor(Math.random() * 3) + 1;
+                const starsToMove = [];
+                
+                for (let i = 0; i < numberOfStarsToMove; i++) {
+                    const randomIndex = Math.floor(Math.random() * stars.length);
+                    if (!starsToMove.includes(stars[randomIndex])) {
+                        starsToMove.push(stars[randomIndex]);
+                    }
+                }
+                
+                starsToMove.forEach(star => {
+                    // Fade out
+                    star.style.opacity = '0';
+                    star.style.transition = 'opacity 0.5s ease';
+                    
+                    // After fade out, move to new position and fade in
+                    setTimeout(() => {
+                        const newX = Math.random() * 100;
+                        const newY = Math.random() * 100;
+                        star.style.left = newX + '%';
+                        star.style.top = newY + '%';
+                        
+                        // Fade back in
+                        setTimeout(() => {
+                            star.style.opacity = '1';
+                        }, 50);
+                    }, 500);
+                });
+            }
+        }, 4000); // Teleport every 4 seconds
+        teleportIntervals.set(container, interval);
+    }
+    
+    function stopStarTeleportation(container) {
+        if (teleportIntervals.has(container)) {
+            clearInterval(teleportIntervals.get(container));
+            teleportIntervals.delete(container);
+        }
+    }
+    
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimeout);
+        hideStars();
+        
+        // Only show stars if user is in hero or footer section
+        const heroRect = heroSection.getBoundingClientRect();
+        const footerRect = footerSection.getBoundingClientRect();
+        const isInHero = heroRect.top <= window.innerHeight && heroRect.bottom >= 0;
+        const isInFooter = footerRect.top <= window.innerHeight && footerRect.bottom >= 0;
+        
+        if (isInHero || isInFooter) {
+            inactivityTimeout = setTimeout(showStars, 3000);
+        }
+    }
+    
+    // Track mouse movement
+    document.addEventListener('mousemove', resetInactivityTimer);
+    
+    // Track scroll
+    window.addEventListener('scroll', resetInactivityTimer);
+    
+    // Initialize
+    resetInactivityTimer();
+    
     // Hero text slide on scroll
     const heroTitle = document.querySelector('.hero-title');
-    const heroSection = document.querySelector('.hero-section');
     
     if (heroTitle && heroSection) {
         const heroObserver = new IntersectionObserver((entries) => {
@@ -96,15 +232,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chatObserver.observe(section);
     });
     
-    // Navbar smooth scroll
-    const navbarLinks = document.querySelectorAll('.navbar-link');
-    navbarLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Add smooth scroll functionality here when sections are ready
-        });
-    });
-    
     // Section indicator update on scroll
     const sectionIndicator = document.getElementById('section-indicator');
     
@@ -179,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Counter animation for intro stats
+    // Counter animation for stats section
     function animateCounter(element, target, duration, suffix = '') {
         let startValue = 0;
         const increment = target / (duration / 16); // 60fps
@@ -196,9 +323,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 16);
     }
     
-    // Observe intro section for counter animation
-    const introSection = document.querySelector('.intro-section');
-    if (introSection) {
+    // Observe stats section for counter animation
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -225,6 +352,29 @@ document.addEventListener('DOMContentLoaded', function() {
             threshold: 0.3
         });
         
-        counterObserver.observe(introSection);
+        counterObserver.observe(statsSection);
     }
 });
+
+// Footer CTA Scroll Detection
+document.addEventListener('DOMContentLoaded', function() {
+    const footerCta = document.getElementById('footer-cta');
+    const footerSection = document.querySelector('.footer-section');
+    
+    if (footerCta && footerSection) {
+        const ctaObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    footerCta.classList.add('visible');
+                } else {
+                    footerCta.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        ctaObserver.observe(footerSection);
+    }
+});
+
