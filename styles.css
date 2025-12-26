@@ -1129,6 +1129,10 @@ body {
         display: block;
     }
     
+    .cursor-image {
+        display: none !important;
+    }
+    
     /* Disable hover flip on touch devices */
     .problem-card:hover .card-inner {
         transform: rotateY(0deg);
@@ -1176,12 +1180,13 @@ body {
 
 .footer-title {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(7rem, 18vw, 18rem);
+    font-size: clamp(6rem, 16vw, 20rem);
     font-weight: 400;
     letter-spacing: -1.2px;
-    line-height: 1.1;
+    line-height: 1;
     color: #fff;
     margin: 0;
+    white-space: nowrap;
     transition: transform 0.6s ease-out, opacity 0.6s ease-out;
     transform: translateX(0);
 }
