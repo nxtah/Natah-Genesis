@@ -75,11 +75,11 @@
         <div class="container">
             <div class="stats-content">
                 <div class="stat-item">
-                    <div class="stat-number">20+</div>
+                    <div class="stat-number">10+</div>
                     <div class="stat-label" data-i18n="stats.projects">Projects Delivered</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">94%</div>
+                    <div class="stat-number">96%</div>
                     <div class="stat-label" data-i18n="stats.satisfaction">Client Satisfaction</div>
                 </div>
                 <div class="stat-item">
@@ -170,6 +170,76 @@
             
             <!-- Cursor Image -->
             <div class="cursor-image"></div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="project-section" data-section="Projects">
+        <div class="container">
+            <h2 class="project-heading"><span data-i18n="project.heading">Our</span> <span class='project-gradient' data-i18n="project.headingHighlight">Projects</span></h2>
+            <p class="project-subtitle" data-i18n="project.subtitle">Real results from real clients — see our work in action</p>
+            
+            <div class="project-grid">
+                <div class="project-card" data-index="1">
+                    <div class="project-image-wrapper">
+                        <img src="gif/web 1.gif" alt="Project 1" class="project-gif" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title" data-i18n="project.p1.title">E-Commerce Platform</h3>
+                                <p class="project-desc" data-i18n="project.p1.desc">Modern online store with seamless checkout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-index="2">
+                    <div class="project-image-wrapper">
+                        <img src="gif/web 2.gif" alt="Project 2" class="project-gif" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title" data-i18n="project.p2.title">Creative Portfolio</h3>
+                                <p class="project-desc" data-i18n="project.p2.desc">Stunning showcase for digital artists</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-index="3">
+                    <div class="project-image-wrapper">
+                        <img src="gif/web 3.gif" alt="Project 3" class="project-gif" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title" data-i18n="project.p3.title">Business Landing</h3>
+                                <p class="project-desc" data-i18n="project.p3.desc">High-converting landing page design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-index="4">
+                    <div class="project-image-wrapper">
+                        <img src="gif/web 4.gif" alt="Project 4" class="project-gif" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title" data-i18n="project.p4.title">SaaS Dashboard</h3>
+                                <p class="project-desc" data-i18n="project.p4.desc">Intuitive analytics and management panel</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-index="5">
+                    <div class="project-image-wrapper">
+                        <img src="gif/web 5.gif" alt="Project 5" class="project-gif" loading="lazy" decoding="async">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3 class="project-title" data-i18n="project.p5.title">Restaurant Website</h3>
+                                <p class="project-desc" data-i18n="project.p5.desc">Elegant dining experience online</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -285,6 +355,25 @@
                 <div class="footer-right">
                     <p>&copy; 2025 Natah-Genesis. All rights reserved.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
+        <button class="modal-close" id="modalClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="modal-content" id="modalContent">
+            <div class="modal-gif-container">
+                <img src="" alt="Project" id="modalGif" class="modal-gif">
+            </div>
+            <div class="modal-description" id="modalDescription">
+                <h3 class="modal-title" id="modalTitle">Project Title</h3>
+                <p class="modal-desc" id="modalDesc">Project description</p>
             </div>
         </div>
     </div>

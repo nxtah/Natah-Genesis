@@ -572,6 +572,112 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Project Modal functionality
+    const projectModal = document.getElementById('projectModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalGif = document.getElementById('modalGif');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalContent = document.getElementById('modalContent');
+    
+    // Open modal when project card is clicked
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            const gifSrc = this.querySelector('.project-gif').src;
+            const title = this.querySelector('.project-title').textContent;
+            const desc = this.querySelector('.project-desc').textContent;
+            
+            // Set modal content
+            modalGif.src = gifSrc;
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+            
+            // Show modal
+            projectModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset description visibility
+            modalDescription.classList.remove('visible');
+            modalContent.scrollTop = 0;
+            
+            // On mobile, show description immediately
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    modalDescription.classList.add('visible');
+                }, 300);
+            }
+        });
+    });
+    
+    // Close modal
+    function closeModal() {
+        projectModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    modalClose.addEventListener('click', closeModal);
+    
+    // Close on backdrop click
+    projectModal.addEventListener('click', function(e) {
+        if (e.target === projectModal) {
+            closeModal();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // Scroll reveal description
+    projectModal.addEventListener('scroll', function() {
+        const scrollPosition = projectModal.scrollTop;
+        const modalHeight = projectModal.scrollHeight - projectModal.clientHeight;
+        
+        // Show description when scrolled past 20% of the modal
+        if (scrollPosition > modalHeight * 0.15 || scrollPosition > 100) {
+            modalDescription.classList.add('visible');
+        }
+    });
+
+    // Project section entrance animation
+    const projectSection = document.querySelector('.project-section');
+    const projectHeading = document.querySelector('.project-heading');
+    const projectSubtitle = document.querySelector('.project-subtitle');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    if (projectSection) {
+        const projectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger heading animation
+                    if (projectHeading) {
+                        projectHeading.classList.add('heading-visible');
+                    }
+                    // Trigger subtitle animation
+                    if (projectSubtitle) {
+                        projectSubtitle.classList.add('subtitle-visible');
+                    }
+                    // Trigger cards animation
+                    if (projectCards.length > 0) {
+                        projectCards.forEach(card => {
+                            card.classList.add('card-visible');
+                        });
+                    }
+                    projectObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        projectObserver.observe(projectSection);
+    }
+
     // Service section entrance animation
     const serviceSection = document.querySelector('.service-section');
     const serviceHeading = document.querySelector('.service-heading');
@@ -633,11 +739,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Animate each number
                     if (statNumbers[0] && !statNumbers[0].classList.contains('animated')) {
-                        animateCounter(statNumbers[0], 500, 2000, '+');
+                        animateCounter(statNumbers[0], 10, 2000, '+');
                         statNumbers[0].classList.add('animated');
                     }
                     if (statNumbers[1] && !statNumbers[1].classList.contains('animated')) {
-                        animateCounter(statNumbers[1], 98, 2000, '%');
+                        animateCounter(statNumbers[1], 96, 2000, '%');
                         statNumbers[1].classList.add('animated');
                     }
                     if (statNumbers[2] && !statNumbers[2].classList.contains('animated')) {

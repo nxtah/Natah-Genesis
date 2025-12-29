@@ -63,6 +63,31 @@ const translations = {
                 desc: "Built to grow with you. Our cloud-native infrastructure scales dynamically, handling increased demand without compromising performance or breaking your budget."
             }
         },
+        project: {
+            heading: "Our",
+            headingHighlight: "Projects",
+            subtitle: "Real results from real clients — see our work in action",
+            p1: {
+                title: "E-Commerce Platform",
+                desc: "Full-stack online store with AI-powered product recommendations and inventory management"
+            },
+            p2: {
+                title: "Creative Portfolio",
+                desc: "Stunning interactive portfolio showcasing creative work with smooth animations and transitions"
+            },
+            p3: {
+                title: "Business Landing",
+                desc: "High-converting landing page with integrated CRM and automated lead nurturing system"
+            },
+            p4: {
+                title: "SaaS Dashboard",
+                desc: "Modern analytics dashboard with real-time data visualization and team collaboration features"
+            },
+            p5: {
+                title: "Restaurant Website",
+                desc: "Dynamic restaurant website with online ordering, reservation system, and menu management"
+            }
+        },
         service: {
             heading: "Our Services",
             subtitle: "Premium web solutions crafted for modern businesses",
@@ -180,6 +205,31 @@ const translations = {
             item3: {
                 title: "Arsitektur Skalabel",
                 desc: "Dibangun untuk tumbuh bersama Anda. Infrastruktur cloud-native kami berkembang secara dinamis, menangani peningkatan permintaan tanpa mengorbankan kinerja atau anggaran Anda."
+            }
+        },
+        project: {
+            heading: "Proyek",
+            headingHighlight: "Kami",
+            subtitle: "Hasil nyata dari klien nyata — lihat karya kami beraksi",
+            p1: {
+                title: "Platform E-Commerce",
+                desc: "Toko online lengkap dengan rekomendasi produk bertenaga AI dan manajemen inventaris"
+            },
+            p2: {
+                title: "Portofolio Kreatif",
+                desc: "Portofolio interaktif yang memukau menampilkan karya kreatif dengan animasi dan transisi yang halus"
+            },
+            p3: {
+                title: "Landing Bisnis",
+                desc: "Halaman landing berkonversi tinggi dengan CRM terintegrasi dan sistem pemeliharaan prospek otomatis"
+            },
+            p4: {
+                title: "Dashboard SaaS",
+                desc: "Dashboard analitik modern dengan visualisasi data real-time dan fitur kolaborasi tim"
+            },
+            p5: {
+                title: "Website Restaurant",
+                desc: "Website restoran dinamis dengan pemesanan online, sistem reservasi, dan manajemen menu"
             }
         },
         service: {
