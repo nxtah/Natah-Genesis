@@ -238,6 +238,28 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(star);
         }
     }
+
+    function launchMeteors(container) {
+        if (!container) return;
+        const meteor = document.createElement('div');
+        meteor.className = 'meteor';
+
+        // Start near top-right, travel to bottom-left
+        const startX = Math.random() * 15 + 75; // 75% - 90%
+        const startY = Math.random() * 25 - 10; // -10% to 15%
+        const travelX = -(Math.random() * 220 + 220); // -220 to -440px
+        const travelY = Math.random() * 260 + 220; // 220-480px downward
+        const duration = (Math.random() * 0.5 + 1.2).toFixed(2); // 1.2-1.7s
+
+        meteor.style.left = startX + '%';
+        meteor.style.top = startY + '%';
+        meteor.style.setProperty('--meteor-translate-x', travelX + 'px');
+        meteor.style.setProperty('--meteor-translate-y', travelY + 'px');
+        meteor.style.animationDuration = duration + 's';
+
+        container.appendChild(meteor);
+        meteor.addEventListener('animationend', () => meteor.remove());
+    }
     
     function showStars() {
         // Check which section is visible and show stars accordingly
@@ -250,6 +272,8 @@ document.addEventListener('DOMContentLoaded', function() {
             createStars(heroStarsContainer);
             heroStarsContainer.classList.add('visible');
             startStarTeleportation(heroStarsContainer);
+            launchMeteors(heroStarsContainer);
+            scheduleMeteor(heroStarsContainer);
         }
         
         if (isInFooter && footerStarsContainer) {
@@ -263,14 +287,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroStarsContainer) {
             heroStarsContainer.classList.remove('visible');
             stopStarTeleportation(heroStarsContainer);
+            stopMeteorSchedule(heroStarsContainer);
         }
         if (footerStarsContainer) {
             footerStarsContainer.classList.remove('visible');
             stopStarTeleportation(footerStarsContainer);
+            stopMeteorSchedule(footerStarsContainer);
         }
     }
     
     let teleportIntervals = new Map();
+    let meteorTimeouts = new Map();
     
     function startStarTeleportation(container) {
         stopStarTeleportation(container);
@@ -309,6 +336,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 4000); // Teleport every 4 seconds
         teleportIntervals.set(container, interval);
+    }
+
+    function stopMeteorSchedule(container) {
+        if (meteorTimeouts.has(container)) {
+            clearTimeout(meteorTimeouts.get(container));
+            meteorTimeouts.delete(container);
+        }
+    }
+
+    function scheduleMeteor(container) {
+        if (!container) return;
+        stopMeteorSchedule(container);
+        const delay = Math.random() * 4000 + 6000; // 6-10s
+        const timeout = setTimeout(() => {
+            launchMeteors(container);
+            scheduleMeteor(container);
+        }, delay);
+        meteorTimeouts.set(container, timeout);
     }
     
     // Problem cards entrance animation
