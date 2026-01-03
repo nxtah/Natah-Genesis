@@ -434,6 +434,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hero text slide on scroll
     const heroTitle = document.querySelector('.hero-title');
+    const getHeroHoverText = () => (translations[currentLang]?.hero?.hover) || 'Help Your Business';
     
     if (heroTitle && heroSection) {
         const heroObserver = new IntersectionObserver((entries) => {
@@ -449,6 +450,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         heroObserver.observe(heroSection);
+
+        // Hover swap text to "Help Your Business"
+        heroTitle.addEventListener('mouseenter', () => {
+            heroTitle.dataset.originalHtml = heroTitle.innerHTML;
+            heroTitle.textContent = getHeroHoverText();
+            heroTitle.classList.add('hero-hover');
+        });
+        heroTitle.addEventListener('mouseleave', () => {
+            if (heroTitle.dataset.originalHtml) {
+                heroTitle.innerHTML = heroTitle.dataset.originalHtml;
+            }
+            heroTitle.classList.remove('hero-hover');
+        });
     }
     
 // Chatbot functionality

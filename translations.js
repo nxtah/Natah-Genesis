@@ -7,7 +7,8 @@ const translations = {
             chatBtnActive: "Chat with my Bot!"
         },
         hero: {
-            title: "Natah-Genesis."
+            title: "Natah-<br>Genesis.",
+            hover: "Help Your Business"
         },
         intro: {
             heading: "Building the Future of ",
@@ -228,7 +229,8 @@ const translations = {
             chatBtnActive: "Chat dengan Bot Saya!"
         },
         hero: {
-            title: "Natah-Genesis."
+            title: "Natah-<br>Genesis.",
+            hover: "Bantu Bisnismu"
         },
         intro: {
             heading: "Membangun Masa Depan ",
