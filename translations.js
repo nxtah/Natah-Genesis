@@ -19,6 +19,83 @@ const translations = {
             satisfaction: "Client Satisfaction",
             support: "Support Available"
         },
+        support: {
+            heading: "Who We",
+            headingHighlight: "Support",
+            subtitle: "Businesses that win the most with a website + AI to close faster, automatically",
+            card1: {
+                title: "Online Stores & SMEs",
+                desc: "IG/TikTok brands and Shopee/Tokopedia sellers that need fast catalogs, automated orders, and 24/7 WhatsApp chat.",
+                tag1: "WA Auto-reply",
+                tag2: "Catalog + Payment",
+                tag3: "Tracking & Alerts"
+            },
+            card2: {
+                title: "F&B, Cafes, Restaurants",
+                desc: "Online menu, table reservations, delivery orders via WA, plus automated promos for repeat customers.",
+                tag1: "Menu & Booking",
+                tag2: "WA + QR Orders",
+                tag3: "Loyalty & Promos"
+            },
+            card3: {
+                title: "Clinics, Salons, Barbers",
+                desc: "Appointments, quick consults, and automated reminders so clients show up on time.",
+                tag1: "Booking & Reminders",
+                tag2: "AI Consult Chat",
+                tag3: "Payment Links"
+            },
+            card4: {
+                title: "Courses & Education",
+                desc: "Enrollment landing page, automated lead follow-ups, and integrated class schedules.",
+                tag1: "Form to WA",
+                tag2: "Auto Follow-up",
+                tag3: "Schedule & Zoom"
+            },
+            card5: {
+                title: "Property & Real Estate",
+                desc: "Clean listings, automatic lead qualification, and effortless viewing schedules.",
+                tag1: "Listings & Gallery",
+                tag2: "Lead Qualifier AI",
+                tag3: "Visit Scheduling"
+            },
+            card6: {
+                title: "Events & Weddings",
+                desc: "Service packages, instant price calculators, and automated RSVPs via WA.",
+                tag1: "Packages & Pricelist",
+                tag2: "Instant Quote",
+                tag3: "RSVP & Guestlist"
+            },
+            card7: {
+                title: "Personal Portfolio",
+                desc: "Personal storytelling, hero work showcase, and clear recruiter CTAs.",
+                tag1: "Storytelling",
+                tag2: "Project Showcase",
+                tag3: "Recruiter CTA"
+            },
+            card8: {
+                title: "Fresh Graduates",
+                desc: "Online CV, campus project gallery, and quick contacts to WhatsApp/LinkedIn.",
+                tag1: "Online CV",
+                tag2: "Project Gallery",
+                tag3: "Contact Buttons"
+            },
+            card9: {
+                title: "Freelancers & Creators",
+                desc: "Design/content services, meeting booking, and brief forms to email/WA.",
+                tag1: "Service Menu",
+                tag2: "Booking Link",
+                tag3: "Brief Form"
+            },
+            card10: {
+                title: "Agencies & Studios",
+                desc: "Service packages, case studies, and intake briefs that drop into your pipeline.",
+                tag1: "Case Studies",
+                tag2: "Service Packages",
+                tag3: "Intake Form"
+            },
+            showMore: "Show more",
+            showLess: "Show less"
+        },
         problem: {
             heading: "The Challenge",
             hint: "Click The Card",
@@ -162,6 +239,83 @@ const translations = {
             projects: "Proyek Diselesaikan",
             satisfaction: "Kepuasan Klien",
             support: "Dukungan Tersedia"
+        },
+        support: {
+            heading: "Siapa yang",
+            headingHighlight: "Kami Bantu",
+            subtitle: "Bisnis yang paling diuntungkan dengan website + AI untuk closing lebih cepat dan otomatis",
+            card1: {
+                title: "Toko Online & UMKM",
+                desc: "Brand IG/TikTok serta seller Shopee/Tokopedia yang butuh katalog cepat, order otomatis, dan chat WhatsApp 24/7.",
+                tag1: "Auto-reply WA",
+                tag2: "Katalog + Bayar",
+                tag3: "Tracking & Notif"
+            },
+            card2: {
+                title: "F&B, Cafe, Restoran",
+                desc: "Menu online, reservasi meja, order delivery via WA, dan promo otomatis untuk pelanggan repeat.",
+                tag1: "Menu & Booking",
+                tag2: "Order WA + QR",
+                tag3: "Loyalty & Promo"
+            },
+            card3: {
+                title: "Klinik, Salon, Barbershop",
+                desc: "Booking jadwal, konsultasi cepat, dan pengingat otomatis supaya klien datang tepat waktu.",
+                tag1: "Booking & Reminder",
+                tag2: "Chat Konsultasi AI",
+                tag3: "Link Pembayaran"
+            },
+            card4: {
+                title: "Kursus & Edukasi",
+                desc: "Landing pendaftaran, follow-up leads otomatis, dan jadwal kelas yang terintegrasi.",
+                tag1: "Form ke WA",
+                tag2: "Follow-up Otomatis",
+                tag3: "Jadwal & Zoom"
+            },
+            card5: {
+                title: "Properti & Real Estate",
+                desc: "Listing rapi, kualifikasi leads otomatis, dan jadwal viewing tanpa ribet.",
+                tag1: "Listing & Galeri",
+                tag2: "Lead Qualifier AI",
+                tag3: "Jadwal Visit"
+            },
+            card6: {
+                title: "Event & Wedding",
+                desc: "Paket layanan, kalkulator harga cepat, dan RSVP tamu otomatis via WA.",
+                tag1: "Paket & Pricelist",
+                tag2: "Quote Instan",
+                tag3: "RSVP & Guestlist"
+            },
+            card7: {
+                title: "Portofolio Personal",
+                desc: "Story personal, showcase karya, dan CTA recruiter yang jelas.",
+                tag1: "Storytelling",
+                tag2: "Showcase Project",
+                tag3: "CTA Recruiter"
+            },
+            card8: {
+                title: "Fresh Graduate",
+                desc: "CV online, galeri project kampus, dan kontak cepat ke WhatsApp/LinkedIn.",
+                tag1: "CV Online",
+                tag2: "Project Gallery",
+                tag3: "Contact Buttons"
+            },
+            card9: {
+                title: "Freelancer & Kreator",
+                desc: "Jasa desain/konten, booking meeting, dan form brief otomatis ke email/WA.",
+                tag1: "Service Menu",
+                tag2: "Booking Link",
+                tag3: "Brief Form"
+            },
+            card10: {
+                title: "Agency & Studio",
+                desc: "Paket layanan, studi kasus, dan intake brief langsung masuk pipeline.",
+                tag1: "Case Studies",
+                tag2: "Service Packages",
+                tag3: "Intake Form"
+            },
+            showMore: "Lihat lebih banyak",
+            showLess: "Tutup"
         },
         problem: {
             heading: "Tantangan",

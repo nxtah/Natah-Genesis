@@ -455,10 +455,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 const sectionName = entry.target.getAttribute('data-section');
                 if (chatbotBtn && sectionName !== 'Introduction') {
-                    chatbotBtn.textContent = 'Chat with my Bot!';
+                    chatbotBtn.textContent = 'Chat with my Bot FREE!';
                     chatbotBtn.classList.add('active');
                 } else if (chatbotBtn && sectionName === 'Introduction') {
-                    chatbotBtn.textContent = 'Your favorite digital AI solution';
+                    chatbotBtn.textContent = 'Your favorite digital solution';
                     chatbotBtn.classList.remove('active');
                 }
             }
@@ -545,6 +545,48 @@ document.addEventListener('DOMContentLoaded', function() {
         solutionItems.forEach(item => {
             itemObserver.observe(item);
         });
+    }
+
+    // Support section entrance animation
+    const supportSection = document.querySelector('.support-section');
+    const supportHeading = document.querySelector('.support-heading');
+    const supportSubtitle = document.querySelector('.support-subtitle');
+    const supportCards = document.querySelectorAll('.support-card');
+    const supportExtraCards = document.querySelectorAll('.support-card.support-extra');
+    const supportShowMore = document.getElementById('support-show-more');
+    
+    if (supportSection) {
+        const supportObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (supportHeading) supportHeading.classList.add('heading-visible');
+                    if (supportSubtitle) supportSubtitle.classList.add('subtitle-visible');
+                    if (supportCards.length > 0) {
+                        supportCards.forEach(card => card.classList.add('card-visible'));
+                    }
+                    supportObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        supportObserver.observe(supportSection);
+    }
+
+    // Support show more toggle
+    if (supportShowMore && supportExtraCards.length > 0) {
+        let expanded = false;
+        const toggleCards = () => {
+            expanded = !expanded;
+            supportExtraCards.forEach(card => {
+                if (expanded) {
+                    card.classList.add('revealed');
+                } else {
+                    card.classList.remove('revealed');
+                }
+            });
+            supportShowMore.classList.toggle('expanded', expanded);
+        };
+        supportShowMore.addEventListener('click', toggleCards);
     }
     
     // Cursor image hover effect
