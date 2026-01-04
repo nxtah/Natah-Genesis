@@ -1,511 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natah-Genesis</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="translations.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Natah-Genesis</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <!-- Desktop Navbar -->
-            <div class="navbar-content">
-                <div class="navbar-left">
-                    <button class="navbar-chat-btn" id="navbar-chat-btn">Your favorite digital solution</button>
-                </div>
-                <div class="navbar-center">
-                    <a href="#" class="navbar-logo">NG</a>
-                </div>
-                <div class="navbar-right">
-                    <button class="lang-toggle" id="lang-toggle">
-                        <span class="lang-option active" data-lang="en">EN</span>
-                        <span class="lang-divider">/</span>
-                        <span class="lang-option" data-lang="id">ID</span>
-                    </button>
-                    <a href="mailto:rizkynath543@gmail.com" class="navbar-link" data-i18n="nav.contact">Get in touch</a>
-                    <span class="navbar-text" id="section-indicator">Introduction</span>
-                </div>
-            </div>
-            
-            <!-- Mobile Navbar -->
-            <div class="mobile-navbar">
-                <a href="#" class="mobile-logo">NG</a>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-                    <span class="dot"></span>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div class="mobile-menu" id="mobile-menu">
-                <a href="#" class="mobile-menu-item" id="mobile-back-to-top">Back to top</a>
-                <a href="mailto:rizkynath543@gmail.com" class="mobile-menu-item">Get in touch</a>
-                <a href="#" class="mobile-menu-item" id="mobile-chat-btn">Chat with my bot <span class="menu-star">★</span></a>
-                <button class="mobile-menu-item mobile-lang-toggle" id="mobile-lang-toggle">
-                    <span class="mobile-lang-option active" data-lang="en">EN</span>
-                    <span class="mobile-lang-divider">/</span>
-                    <span class="mobile-lang-option" data-lang="id">ID</span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section" data-section="Introduction">
-        <div class="stars-container" id="stars-container"></div>
-        <div class="container">
-            <h1 class="hero-title" data-i18n-html="hero.title">Natah-Genesis.</h1>
-        </div>
-    </section>
-
-    <!-- Intro Section -->
-    <section class="intro-section" data-section="About">
-        <div class="container">
-            <div class="intro-content">
-                <h2 class="intro-heading" data-i18n="intro.heading">Building the Future of <br><span class="intro-highlight" data-i18n="intro.highlight">Intelligent Business</span></h2> <br>
-                <p class="intro-description" data-i18n-html="intro.description"><span class="intro-pop">Natah-Genesis</span> brings deep expertise in <span class="intro-pop">AI automation</span> and intelligent systems, helping businesses streamline operations and <span class="intro-pop">scale efficiently</span> through cutting-edge technology solutions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section" data-section="Statistics">
-        <div class="container">
-            <div class="stats-content">
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label" data-i18n="stats.projects">Projects Delivered</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">96%</div>
-                    <div class="stat-label" data-i18n="stats.satisfaction">Client Satisfaction</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label" data-i18n="stats.support">Support Available</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Support Section -->
-    <section class="support-section" data-section="Support">
-        <div class="container">
-            <h2 class="support-heading"><span data-i18n="support.heading">Who We</span> <span class="support-gradient" data-i18n="support.headingHighlight">Support</span></h2>
-            <p class="support-subtitle" data-i18n="support.subtitle">Bisnis yang paling diuntungkan dengan website + AI untuk close lebih cepat dan otomatis</p>
-
-            <div class="support-grid">
-                <div class="support-card">
-                    <div class="support-icon">🛍️</div>
-                    <h3 class="support-title" data-i18n="support.card1.title">Toko Online & UMKM</h3>
-                    <p class="support-desc" data-i18n="support.card1.desc">Brand IG/TikTok, seller Shopee/Tokopedia yang butuh katalog cepat, order otomatis, dan chat WhatsApp 24/7.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card1.tag1">Auto-reply WA</span>
-                        <span class="support-tag" data-i18n="support.card1.tag2">Katalog + Payment</span>
-                        <span class="support-tag" data-i18n="support.card1.tag3">Tracking & Notif</span>
-                    </div>
-                </div>
-
-                <div class="support-card">
-                    <div class="support-icon">🍽️</div>
-                    <h3 class="support-title" data-i18n="support.card2.title">F&B, Cafe, Restaurant</h3>
-                    <p class="support-desc" data-i18n="support.card2.desc">Menu online, reservasi meja, order delivery via WA, dan promo otomatis ke pelanggan repeat.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card2.tag1">Menu & Booking</span>
-                        <span class="support-tag" data-i18n="support.card2.tag2">Order WA + QR</span>
-                        <span class="support-tag" data-i18n="support.card2.tag3">Loyalty & Promo</span>
-                    </div>
-                </div>
-
-                <div class="support-card">
-                    <div class="support-icon">💇‍♀️</div>
-                    <h3 class="support-title" data-i18n="support.card3.title">Clinic, Salon, Barber</h3>
-                    <p class="support-desc" data-i18n="support.card3.desc">Booking jadwal, konsultasi cepat, dan pengingat otomatis supaya klien datang tepat waktu.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card3.tag1">Booking & Reminder</span>
-                        <span class="support-tag" data-i18n="support.card3.tag2">Chat Konsultasi AI</span>
-                        <span class="support-tag" data-i18n="support.card3.tag3">Pembayaran Link</span>
-                    </div>
-                </div>
-
-                <div class="support-card">
-                    <div class="support-icon">🎓</div>
-                    <h3 class="support-title" data-i18n="support.card4.title">Kursus & Edukasi</h3>
-                    <p class="support-desc" data-i18n="support.card4.desc">Landing page pendaftaran, automasi follow-up leads, dan jadwal kelas terintegrasi.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card4.tag1">Form to WA</span>
-                        <span class="support-tag" data-i18n="support.card4.tag2">Follow-up Otomatis</span>
-                        <span class="support-tag" data-i18n="support.card4.tag3">Jadwal & Zoom</span>
-                    </div>
-                </div>
-
-                <div class="support-card">
-                    <div class="support-icon">🏠</div>
-                    <h3 class="support-title" data-i18n="support.card5.title">Properti & Real Estate</h3>
-                    <p class="support-desc" data-i18n="support.card5.desc">Listing rapi, kualifikasi leads otomatis, dan jadwal viewing tanpa ribet.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card5.tag1">Listing & Gallery</span>
-                        <span class="support-tag" data-i18n="support.card5.tag2">Lead Qualifier AI</span>
-                        <span class="support-tag" data-i18n="support.card5.tag3">Jadwal Visit</span>
-                    </div>
-                </div>
-
-                <div class="support-card">
-                    <div class="support-icon">🎉</div>
-                    <h3 class="support-title" data-i18n="support.card6.title">Event & Wedding</h3>
-                    <p class="support-desc" data-i18n="support.card6.desc">Paket layanan, kalkulator harga cepat, dan RSVP tamu otomatis via WA.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card6.tag1">Paket & Pricelist</span>
-                        <span class="support-tag" data-i18n="support.card6.tag2">Quote Instan</span>
-                        <span class="support-tag" data-i18n="support.card6.tag3">RSVP & Guestlist</span>
-                    </div>
-                </div>
-
-                <div class="support-card support-extra">
-                    <div class="support-icon">🎨</div>
-                    <h3 class="support-title" data-i18n="support.card7.title">Portofolio Personal</h3>
-                    <p class="support-desc" data-i18n="support.card7.desc">Cerita personal, showcase karya terbaik, dan CTA perekrutan yang jelas.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card7.tag1">Storytelling</span>
-                        <span class="support-tag" data-i18n="support.card7.tag2">Showcase Project</span>
-                        <span class="support-tag" data-i18n="support.card7.tag3">CTA Recruiter</span>
-                    </div>
-                </div>
-
-                <div class="support-card support-extra">
-                    <div class="support-icon">🧑‍🎓</div>
-                    <h3 class="support-title" data-i18n="support.card8.title">Fresh Graduate</h3>
-                    <p class="support-desc" data-i18n="support.card8.desc">CV online, galeri project kampus, dan kontak cepat ke WhatsApp/LinkedIn.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card8.tag1">CV Online</span>
-                        <span class="support-tag" data-i18n="support.card8.tag2">Project Gallery</span>
-                        <span class="support-tag" data-i18n="support.card8.tag3">Contact Buttons</span>
-                    </div>
-                </div>
-
-                <div class="support-card support-extra">
-                    <div class="support-icon">💼</div>
-                    <h3 class="support-title" data-i18n="support.card9.title">Freelancer & Creator</h3>
-                    <p class="support-desc" data-i18n="support.card9.desc">Jasa desain/konten, booking meeting, dan form brief otomatis ke email/WA.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card9.tag1">Service Menu</span>
-                        <span class="support-tag" data-i18n="support.card9.tag2">Booking Link</span>
-                        <span class="support-tag" data-i18n="support.card9.tag3">Brief Form</span>
-                    </div>
-                </div>
-
-                <div class="support-card support-extra">
-                    <div class="support-icon">🏢</div>
-                    <h3 class="support-title" data-i18n="support.card10.title">Agency & Studio</h3>
-                    <p class="support-desc" data-i18n="support.card10.desc">Paket layanan, studi kasus, dan intake brief yang langsung masuk pipeline.</p>
-                    <div class="support-tags">
-                        <span class="support-tag" data-i18n="support.card10.tag1">Case Studies</span>
-                        <span class="support-tag" data-i18n="support.card10.tag2">Service Packages</span>
-                        <span class="support-tag" data-i18n="support.card10.tag3">Intake Form</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="support-actions">
-                <button class="support-show-more" id="support-show-more">
-                    <span class="show-more-label" data-i18n="support.showMore">Show more</span>
-                    <span class="show-less-label" data-i18n="support.showLess">Show less</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="problem-section" data-section="Problem">
-        <div class="container">
-            <h2 class="problem-heading" data-i18n="problem.heading">The Challenge<span class="thinking-dots"><span>.</span><span>.</span><span>.</span></span></h2>
-            <p class="problem-hint" data-i18n="problem.hint">Click The Card</p>
-            <div class="problem-cards">
-                <div class="problem-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3 class="card-title" data-i18n="problem.card1Front.title">Manual Processes</h3>
-                            <p class="card-description" data-i18n="problem.card1Front.desc">Businesses spend countless hours on repetitive tasks that drain resources and limit growth potential, preventing teams from focusing on strategic initiatives.</p>
-                        </div>
-                        <div class="card-back">
-                            <h3 class="card-title" data-i18n="problem.card1Back.title">Our Solution</h3>
-                            <p class="card-description" data-i18n="problem.card1Back.desc">Automate repetitive workflows with intelligent systems that learn and adapt. Our AI agents work 24/7 to handle routine tasks, giving your team back precious time to focus on innovation and strategic growth. Reduce operational costs by up to 60% while improving accuracy and consistency.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="problem-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3 class="card-title" data-i18n="problem.card2Front.title">Inefficient Workflows</h3>
-                            <p class="card-description" data-i18n="problem.card2Front.desc">Disconnected systems and fragmented data create bottlenecks that slow down operations, reduce productivity, and lead to missed opportunities.</p>
-                        </div>
-                        <div class="card-back">
-                            <h3 class="card-title" data-i18n="problem.card2Back.title">Our Solution</h3>
-                            <p class="card-description" data-i18n="problem.card2Back.desc">Integrate your entire tech stack into one seamless ecosystem. We bridge gaps between tools and platforms, creating unified workflows that eliminate bottlenecks. Real-time data synchronization ensures every team has access to the information they need, when they need it, improving decision-making speed by 5x.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="problem-card">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h3 class="card-title" data-i18n="problem.card3Front.title">Limited Scalability</h3>
-                            <p class="card-description" data-i18n="problem.card3Front.desc">Traditional solutions struggle to adapt to growing demands, making it difficult for organizations to scale efficiently without exponential cost increases.</p>
-                        </div>
-                        <div class="card-back">
-                            <h3 class="card-title" data-i18n="problem.card3Back.title">Our Solution</h3>
-                            <p class="card-description" data-i18n="problem.card3Back.desc">Built on cloud-native architecture that grows with your business. Our scalable infrastructure automatically adjusts to demand, eliminating costly infrastructure management. Pay only for what you use while enjoying enterprise-grade reliability and security. Scale from 100 to 100,000 users without any performance degradation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="solution-section" data-section="Solution">
-        <div class="container">
-            <h2 class="solution-heading" data-i18n-html="solution.heading">AI-Powered <span class="solution-gradient">Solutions</span></h2>
-            <p class="solution-subtitle" data-i18n="solution.subtitle">Transform your business with intelligent automation that adapts to your needs</p>
-            
-            <div class="solution-content">
-                <div class="solution-item" data-image="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=600&fit=crop">
-                    <div class="solution-number">01</div>
-                    <div class="solution-details">
-                        <h3 class="solution-title" data-i18n="solution.item1.title">Intelligent Automation</h3>
-                        <p class="solution-description" data-i18n="solution.item1.desc">Our AI agents handle repetitive tasks autonomously, freeing your team to focus on strategic work that drives real value. From data processing to customer interactions, we automate what matters.</p>
-                    </div>
-                </div>
-                
-                <div class="solution-item" data-image="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=600&fit=crop">
-                    <div class="solution-number">02</div>
-                    <div class="solution-details">
-                        <h3 class="solution-title" data-i18n="solution.item2.title">Seamless Integration</h3>
-                        <p class="solution-description" data-i18n="solution.item2.desc">Connect all your systems into one unified ecosystem. Our solutions integrate with your existing tools, creating smooth workflows that eliminate bottlenecks and maximize efficiency.</p>
-                    </div>
-                </div>
-                
-                <div class="solution-item" data-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=600&fit=crop">
-                    <div class="solution-number">03</div>
-                    <div class="solution-details">
-                        <h3 class="solution-title" data-i18n="solution.item3.title">Scalable Architecture</h3>
-                        <p class="solution-description" data-i18n="solution.item3.desc">Built to grow with you. Our cloud-native infrastructure scales dynamically, handling increased demand without compromising performance or breaking your budget.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cursor Image -->
-            <div class="cursor-image"></div>
-        </div>
-    </section>
-
-    <!-- Project Section -->
-    <section class="project-section" data-section="Projects">
-        <div class="container">
-            <h2 class="project-heading"><span data-i18n="project.heading">Our</span> <span class='project-gradient' data-i18n="project.headingHighlight">Projects</span></h2>
-            <p class="project-subtitle" data-i18n="project.subtitle">Real results from real clients — see our work in action</p>
-            
-            <div class="project-grid">
-                <div class="project-card" data-index="1">
-                    <div class="project-image-wrapper">
-                        <img src="gif/web 1.gif" alt="Project 1" class="project-gif" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title" data-i18n="project.p1.title">E-Commerce Platform</h3>
-                                <p class="project-desc" data-i18n="project.p1.desc">Modern online store with seamless checkout</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-index="2">
-                    <div class="project-image-wrapper">
-                        <img src="gif/web 2.gif" alt="Project 2" class="project-gif" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title" data-i18n="project.p2.title">Creative Portfolio</h3>
-                                <p class="project-desc" data-i18n="project.p2.desc">Stunning showcase for digital artists</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-index="3">
-                    <div class="project-image-wrapper">
-                        <img src="gif/web 3.gif" alt="Project 3" class="project-gif" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title" data-i18n="project.p3.title">Business Landing</h3>
-                                <p class="project-desc" data-i18n="project.p3.desc">High-converting landing page design</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-index="4">
-                    <div class="project-image-wrapper">
-                        <img src="gif/web 4.gif" alt="Project 4" class="project-gif" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title" data-i18n="project.p4.title">SaaS Dashboard</h3>
-                                <p class="project-desc" data-i18n="project.p4.desc">Intuitive analytics and management panel</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card" data-index="5">
-                    <div class="project-image-wrapper">
-                        <img src="gif/web 5.gif" alt="Project 5" class="project-gif" loading="lazy" decoding="async">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3 class="project-title" data-i18n="project.p5.title">Restaurant Website</h3>
-                                <p class="project-desc" data-i18n="project.p5.desc">Elegant dining experience online</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Service Section -->
-    <section class="service-section" data-section="Service">
-        <div class="container">
-            <h2 class="service-heading" data-i18n="service.heading">Our Services</h2>
-            <p class="service-subtitle" data-i18n="service.subtitle">Premium web solutions crafted for modern businesses</p>
-            
-            <div class="service-grid">
-                <div class="service-box">
-                    <div class="service-icon">🚀</div>
-                    <h3 class="service-box-title" data-i18n="service.landing.title">Landing Page</h3>
-                    <p class="service-box-description" data-i18n="service.landing.desc">Convert visitors into customers with high-performance landing pages designed for maximum impact</p>
-                    <div class="service-features">
-                        <span class="feature-tag" data-i18n="service.landing.tag1">Fast Loading</span>
-                        <span class="feature-tag" data-i18n="service.landing.tag2">Conversion Focused</span>
-                        <span class="feature-tag" data-i18n="service.landing.tag3">Mobile First</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">💼</div>
-                    <h3 class="service-box-title" data-i18n="service.business.title">Business Website</h3>
-                    <p class="service-box-description" data-i18n="service.business.desc">Professional websites that establish credibility and drive growth for your business</p>
-                    <div class="service-features">
-                        <span class="feature-tag" data-i18n="service.business.tag1">SEO Optimized</span>
-                        <span class="feature-tag" data-i18n="service.business.tag2">Scalable</span>
-                        <span class="feature-tag" data-i18n="service.business.tag3">Analytics Ready</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">🎨</div>
-                    <h3 class="service-box-title" data-i18n="service.portfolio.title">Personal Portfolio</h3>
-                    <p class="service-box-description" data-i18n="service.portfolio.desc">Stand out from the crowd with a stunning portfolio that showcases your unique story and work</p>
-                    <div class="service-features">
-                        <span class="feature-tag" data-i18n="service.portfolio.tag1">Creative Design</span>
-                        <span class="feature-tag" data-i18n="service.portfolio.tag2">Interactive</span>
-                        <span class="feature-tag" data-i18n="service.portfolio.tag3">Personal Branding</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">💎</div>
-                    <h3 class="service-box-title" data-i18n="service.bundleBiz.title">Business + AI Bundle</h3>
-                    <p class="service-box-description" data-i18n="service.bundleBiz.desc">Elevate your business with a professional website integrated with intelligent AI chatbot support</p>
-                    <div class="service-features">
-                        <span class="feature-tag" data-i18n="service.bundleBiz.tag1">24/7 AI Support</span>
-                        <span class="feature-tag" data-i18n="service.bundleBiz.tag2">Smart Automation</span>
-                        <span class="feature-tag" data-i18n="service.bundleBiz.tag3">Best Value</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">✨</div>
-                    <h3 class="service-box-title" data-i18n="service.bundlePort.title">Portfolio + AI Bundle</h3>
-                    <p class="service-box-description" data-i18n="service.bundlePort.desc">Make lasting impressions with an AI-powered portfolio that engages visitors intelligently</p>
-                    <div class="service-features">
-                        <span class="feature-tag" data-i18n="service.bundlePort.tag1">AI Assistant</span>
-                        <span class="feature-tag" data-i18n="service.bundlePort.tag2">Lead Generation</span>
-                        <span class="feature-tag" data-i18n="service.bundlePort.tag3">Premium Package</span>
-                    </div>
-                </div>
-                
-                <div class="service-box">
-                    <div class="service-icon">🤖</div>
-                    <h3 class="service-box-title" data-i18n="service.custom.title">Custom AI Solutions</h3>
-                    <p class="service-box-description" data-i18n="service.custom.desc">Need something unique? Let's build custom AI-powered features tailored specifically for you</p>
-                    <div class="service-features">
-                        <span class="feature-tag" data-i18n="service.custom.tag1">Fully Custom</span>
-                        <span class="feature-tag" data-i18n="service.custom.tag2">Flexible</span>
-                        <span class="feature-tag" data-i18n="service.custom.tag3">Consultation</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Botpress Chatbot -->
-    <div class="chatbot-container" id="chatbot-container">
-        <iframe
-            src="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/12/21/06/20251221062928-5WI0TC67.json"
-            frameborder="0"
-            allow="autoplay; microphone; camera"
-            class="botpress-iframe"
-        ></iframe>
-        <button class="chatbot-close" id="chatbot-close">×</button>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer-section" data-section="Footer">
-        <div class="stars-container" id="footer-stars-container"></div>
-        <div class="container">
-            <h2 class="footer-title">Natah-Genesis.</h2>
-            <div class="footer-cta" id="footer-cta">
-                <div class="cta-arrow">↑</div>
-                <p class="cta-text">Chat with us</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Footer Info Bar -->
-    <div class="footer-info">
-        <div class="container">
-            <div class="footer-info-content">
-                <div class="footer-left">
-                    <p>made by natah.</p>
-                </div>
-                <div class="footer-center">
-                    <a href="mailto:rizkynath543@gmail.com">rizkynath543@gmail.com</a>
-                </div>
-                <div class="footer-right">
-                    <p>&copy; 2025 Natah-Genesis. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Project Modal -->
-    <div class="project-modal" id="projectModal">
-        <button class="modal-close" id="modalClose">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <div class="modal-content" id="modalContent">
-            <div class="modal-gif-container">
-                <img src="" alt="Project" id="modalGif" class="modal-gif">
-            </div>
-            <div class="modal-description" id="modalDescription">
-                <h3 class="modal-title" id="modalTitle">Project Title</h3>
-                <p class="modal-desc" id="modalDesc">Project description</p>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+	<header class="navbar" aria-label="Main navigation">
+		<div class="nav__container">
+			<div class="nav__logo" aria-label="Natah Genesis logo">NATAH -<br>GENESIS</div>
+			<div class="nav__actions">
+				<button class="nav__btn nav__btn--ghost">Konsultasi Gratis!</button>
+				<button class="nav__btn nav__btn--solid">Kembangin Bisnis Sekarang</button>
+			</div>
+		</div>
+	</header>
+	<main class="page">
+		<section class="hero" aria-labelledby="hero-title">
+			<div class="hero__inner">
+				<img class="hero__arrow" src="images/arrow1.svg" alt="" aria-hidden="true">
+				<div class="hero__badge">
+					<span class="hero__badge-emoji" aria-hidden="true">💸</span>
+					<span class="hero__badge-lines">
+						<span>PELANGGAN</span>
+						<span>AUTO BANYAK</span>
+					</span>
+				</div>
+				<div class="hero__badge hero__badge--second">
+				<span class="hero__badge-emoji" aria-hidden="true">🔥</span>
+					<span class="hero__badge-lines">
+						<span>BISNIS LO</span>
+						<span>JADI RAME!</span>
+					</span>
+				</div>
+				<h1 id="hero-title" class="hero__title">KEMBANGIN<br>BISNIS BARENG<br>NATAH-GENESIS</h1>
+				<button class="hero__cta">
+					<svg class="hero__cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3 10L21 3L14 21L10 13L3 10Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<span>GABUNG</span>
+				</button>
+			</div>
+		</section>
+		<section class="problem">
+			<div class="problem__inner">
+				<h2 class="problem__title">BISNIS LO<br>NGALAMIN<br>INI?</h2>
+				<ul class="problem__list">
+					<li class="problem__item">Bisnis sepi leads, promosi IG nggak efektif</li>
+					<li class="problem__item">Jawab Chat Di Waktu Istirahat</li>
+					<li class="problem__item">Website ribet & mahal</li>
+					<li class="problem__item">Waktu habis tapi nggak ada hasil</li>
+                    <li class="problem__item">Banyak Chat Tenggelem</li>
+				</ul>
+				<p class="problem__hint">tenang aja, gue punya solusinya..</p>
+			</div>
+		</section>
+		<section class="solution">
+			<div class="solution__inner">
+				<h2 class="solution__title">SOLUSI NYA<br>ADA DI SINI</h2>
+				<div class="solution__grid">
+					<div class="solution__card solution__card--large">
+						<h3>Website Profesional</h3>
+						<p>bikin website keren dalam hitungan hari, bukan bulan</p>
+					</div>
+					<div class="solution__card solution__card--small">
+						<h3>Sistem Otomatis</h3>
+						<p>automasi penuh buat bisnis lo</p>
+					</div>
+					<div class="solution__card solution__card--small">
+						<h3>Support 24/7</h3>
+						<p>AI lo ga pernah libur</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script src="script.js"></script>
 </body>
 </html>
-
